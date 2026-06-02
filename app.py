@@ -10,7 +10,7 @@ st.sidebar.title("Parámetros")
 st.image("Python_logo.png")
 st.sidebar.image("DMC.png")
 
-
+st.write("Elaborado por MJHC")
 
 
 
