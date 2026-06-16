@@ -605,7 +605,7 @@ elif modulo == "Análisis visual":
 
             st.dataframe(data.head())
 
-            with tab2:
+        with tab2:
 
             st.subheader("Análisis Univariado")
 
