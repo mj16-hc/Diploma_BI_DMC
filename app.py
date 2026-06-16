@@ -605,6 +605,45 @@ elif modulo == "Análisis visual":
 
             st.dataframe(data.head())
 
+            with tab2:
+
+            st.subheader("Análisis Univariado")
+
+            variables_numericas = (
+                data.select_dtypes(
+                    include="number"
+                ).columns.tolist()
+            )
+
+            if len(variables_numericas) > 0:
+
+                variable = st.selectbox(
+                    "Seleccione variable numérica",
+                    variables_numericas
+                )
+
+                    fig = px.histogram(
+                    data,
+                    x=variable,
+                    nbins=30,
+                    title=f"Distribución de {variable}"
+                )
+
+                st.plotly_chart(
+                    fig,
+                    use_container_width=True
+                )
+                fig2, ax = plt.subplots()
+
+                ax.boxplot(
+                    data[variable].dropna()
+                )
+
+                ax.set_title(
+                    f"Boxplot de {variable}"
+                )
+
+                st.pyplot(fig2)
     else:
 
         st.warning(
