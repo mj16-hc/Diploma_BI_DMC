@@ -604,3 +604,9 @@ elif modulo == "Análisis visual":
                 )
 
             st.dataframe(data.head())
+
+    else:
+
+        st.warning(
+            "Primero debe cargar un dataset."
+        )
