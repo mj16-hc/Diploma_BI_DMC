@@ -2,6 +2,10 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import re
+import plotly.express as px
+import plotly.graph_objects as go
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 st.set_page_config(
     page_title="Analisis de Datasets",
@@ -556,39 +560,42 @@ elif modulo == "Procesamiento de Datos":
 # ==============================
 # MÓDULO ANÁLISIS VISUAL
 # ==============================
+elif modulo == "Análisis visual":
 
-elif modulos == "Análisis visual":
-
-    st.subheader("Análisis visual")
+    st.title("📊 Análisis Visual")
 
     if st.session_state.data is not None:
 
-        data = st.session_state.data
+        data = st.session_state.data.copy()
 
-        st.write("Dataset disponible para análisis visual:")
-        st.dataframe(data)
-
-        lista_columna_numerica = data.select_dtypes(
-            include="number"
-        ).columns.tolist()
-
-        variable_numerica = st.selectbox(
-            "Seleccione la columna numérica",
-            lista_columna_numerica
+        tab1 = st.tabs(
+            [
+                "📋 Resumen"
+            ]
         )
 
-        lista_columna_categorica = data.select_dtypes(
-            include=["object", "category"]
-        ).columns.tolist()
+        with tab1:
 
-        variable_categorica = st.selectbox(
-            "Seleccione la columna categórica",
-            lista_columna_categorica
-        )
+            st.subheader("Resumen General")
 
-    else:
+            col1,col2,col3,col4 = st.columns(4)
 
-        st.warning(
-            "Primero debe cargar un dataset en el módulo "
-            "'Carga y perfil del dataset'."
-        )
+            with col1:
+                st.metric("Filas", data.shape[0])
+
+            with col2:
+                st.metric("Columnas", data.shape[1])
+
+            with col3:
+                st.metric(
+                    "Nulos",
+                    data.isnull().sum().sum()
+                )
+
+            with col4:
+                st.metric(
+                    "Duplicados",
+                    data.duplicated().sum()
+                )
+
+            st.dataframe(data.head())
