@@ -12,7 +12,7 @@ st.sidebar.image("DMC.png")
 
 st.write("Elaborado por MJHC")
 
-
-
+##Carga de Archivo
+archivo = st.file_uploader("Cargue el archivo excel o csv")
 
 
