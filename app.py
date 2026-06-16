@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 ##Titulo
 st.title("Proyecto Final Diploma BI")
