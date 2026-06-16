@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 st.set_page_config(
-    page_title="App Analizadora de Datasets",
+    page_title="Analisis de Datasets",
     page_icon="📊",
     layout="wide"
 )
