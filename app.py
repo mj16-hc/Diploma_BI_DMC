@@ -622,7 +622,7 @@ elif modulo == "Análisis visual":
                     variables_numericas
                 )
 
-                    fig = px.histogram(
+                fig = px.histogram(
                     data,
                     x=variable,
                     nbins=30,
