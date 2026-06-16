@@ -356,21 +356,24 @@ elif modulo == "Procesamiento de Datos":
             )
 
 #Conversion de fechas
+       #Conversion de fechas
+        st.subheader("3️⃣ Conversión de fechas")
+
         columnas_texto = data.select_dtypes(
-    include=["object"]
-).columns.tolist()
+            include=["object"]
+        ).columns.tolist()
 
-columnas_fecha = st.multiselect(
-    "Seleccione columnas fecha",
-    columnas_texto
-)
+        columnas_fecha = st.multiselect(
+            "Seleccione columnas fecha",
+            columnas_texto
+        )
 
-for col in columnas_fecha:
+        for col in columnas_fecha:
 
-    data[col] = pd.to_datetime(
-        data[col],
-        errors="coerce"
-    )
+            data[col] = pd.to_datetime(
+                data[col],
+                errors="coerce"
+            )
 
 #Nulos
         st.subheader("4️⃣ Valores faltantes")
