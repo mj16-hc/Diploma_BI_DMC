@@ -568,9 +568,14 @@ elif modulo == "Análisis visual":
 
         data = st.session_state.data.copy()
 
-        tab1 = st.tabs(
+        tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(
             [
-                "📋 Resumen"
+                "📋 Resumen",
+                "📈 Univariado",
+                "📊 Bivariado",
+                "🔥 Correlación",
+                "📅 Temporal",
+                "💡 Insights"
             ]
         )
 
