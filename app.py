@@ -356,45 +356,21 @@ elif modulo == "Procesamiento de Datos":
             )
 
 #Conversion de fechas
-        st.subheader("3️⃣ Conversión de fechas")
+        columnas_texto = data.select_dtypes(
+    include=["object"]
+).columns.tolist()
 
-        posibles_fechas = []
+columnas_fecha = st.multiselect(
+    "Seleccione columnas fecha",
+    columnas_texto
+)
 
-        for col in data.columns:
+for col in columnas_fecha:
 
-            try:
-
-                conversion = pd.to_datetime(
-                    data[col],
-                    errors="coerce"
-                )
-
-                porcentaje = (
-                    conversion.notna().sum()
-                    / len(data)
-                )
-
-                if porcentaje > 0.80:
-
-                    data[col] = conversion
-
-                    posibles_fechas.append(col)
-
-            except:
-                pass
-
-        if len(posibles_fechas) > 0:
-
-            st.success(
-                f"Columnas fecha detectadas: "
-                f"{', '.join(posibles_fechas)}"
-            )
-
-        else:
-
-            st.info(
-                "No se detectaron columnas fecha."
-            )
+    data[col] = pd.to_datetime(
+        data[col],
+        errors="coerce"
+    )
 
 #Nulos
         st.subheader("4️⃣ Valores faltantes")
